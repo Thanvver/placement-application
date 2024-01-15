@@ -1,0 +1,67 @@
+{%extends 'jobseeker/base.html'%}
+
+{%block bodyblock%}
+
+{%if form.errors%}
+{{form.errors}}
+{%endif%}
+<div class="container d-flex justify-content-around">
+    <form action="" method="post" class="bg-white m-5 p-5 w-75 rounded-3" enctype="multipart/form-data">
+       {%csrf_token%}
+        <p class="fw-bold fs-4 ">Student Register</p>
+        <hr class="mb-5 w-25 border-4">
+        <div class=" row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 "><label for="">Full Name :</label><input
+                    type="text" name="first_name" value="{{form.first_name.value}}" class="form-control"></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-4"><label for="">Gender :</label>
+                {{form.gender}}
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-4">
+                <label class="" for="">Qualification
+                    :</label>
+                    <input type="text" name="qualification" value="{{form.qualification.value}}" class="form-control"></div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-4">
+                <label class="" for="">Profile Picture
+                    :</label>
+                   {{form.profile_pic}}
+                </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-4"><label class="" for="">Resume :</label>
+               {{form.resume}}
+                </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-4">
+                <label class="" for="">Phone :</label>
+                <input type="number" name="phone" value="{{form.phone.value}}" class="form-control"></div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-4"><label class="" for="">Experience :</label>
+                <input
+                    type="text" name="experience" value="{{form.experience.value}}" class="form-control"></div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-4">
+                <label class="" for="">DOB :
+
+            </label>
+            {{form.age}}
+        </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-4"><label class="" for="">Skills :</label>
+                <textarea name="skills"
+                    class="form-control">
+                    {{form.skills.value}}
+                </textarea></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-4"><label class="" for="">Address :</label>
+                <textarea
+                    class="form-control" name="address">
+                    {{form.address.value}}
+                </textarea></div>
+<div class="text-center">
+<button class="btn btn-dark mt-4 mb-4 w-50">Edit</button>
+   
+</div>
+
+
+        </div>
+    </form>
+</div>
+
+
+
+
+{%endblock%}

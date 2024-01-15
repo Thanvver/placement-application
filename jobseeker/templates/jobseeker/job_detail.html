@@ -1,0 +1,46 @@
+{%extends 'jobseeker/base.html'%}
+
+{%block bodyblock%}
+
+<div class="card mt-5" style="width:80%" >
+    <div class="row">
+        <div class="col-4 d-flex align-items-center">
+            {%if data.poster%}
+            <img src="{{data.poster.url}}" class="rounded" alt="..." width="100%">
+            {%endif%}
+        </div>
+        <div class="col-8">
+
+            <div class="card-body">
+                <h5 class="card-title fw-bolder">{{data.title}}</h5>
+                <p class="card-text">Description:{{data.description}}
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">salary:{{data.salary}}</li>
+                <li class="list-group-item">Experience:{{data.experience}}</li>
+                <li class="list-group-item">Last Date:{{data.last_date}}</li>
+                <li class="list-group-item">Vaccancies:{{data.vaccancies}}</li>
+                <li class="list-group-item">Contact:{{data.contact}}</li>
+                <li class="list-group-item">Qualification:{{data.qualification}}</li>
+                <li class="list-group-item">category:{{data.category}}</li>
+                <li class="list-group-item">company:{{data.company}}</li>
+                <li class="list-group-item">Job type:{{data.job_type}}</li>
+
+
+
+
+
+
+            </ul>
+            <div class="card-body d-flex justify-content-center">
+                <form action="{%url 'job-apply' data.id%}" method="post">
+                    {%csrf_token%}
+                    <button type="submit">Apply</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,68 @@
+{%extends "jobseeker/base.html"%}
+{%block bodyblock%}
+{% load static %}
+<div>
+
+</div>
+{%if form.errors%}
+{{form.errors}}
+{%endif%}
+
+<div class="row">
+    <div class="col-2 bg-light ">
+        <div class="mt-5 mx-2">
+        </div>
+    </div>
+    <div class="col-8 ps-4 pt-5 bg-light">
+        <div class="">
+            <div class="container-fluid">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+            </div>
+            <hr class="border-3 w-25 d-flex justify-content-center"><br>
+        </div>
+        {%for application in data%}
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    {%if application.job.poster%}
+                    <div class="d-flex justify-content-center align-content-around mt-4">
+                        <img src="{{application.job.poster.url}}" class="" style="width: 50%;height: fit-content;object-fit:cover;">
+
+                    </div>
+                    {%else%}
+                    <div class="d-flex justify-content-center align-content-around mt-4">
+                        <img src="{% static 'jobseeker/images/hiring.jpg' %}" class="" style="width: 50%;height: fit-content;object-fit:cover;">
+                    </div>
+                    {%endif%}
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">{{application.job.title}}</h5>
+                        <p>Company:{{application.job.company}}</p>
+                        <p>Vaccancies:{{application.job.vaccancies}}</p>
+                        <p>Last Date:{{application.job.last_date}}</p>
+                        <p>status:{{application.status}}</p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center flex-column ">
+                    <div class="">
+                        <p>Applications:{{application.job.application_count}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="col-2 bg-light ">
+        <div class="mt-5 mx-2">
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}

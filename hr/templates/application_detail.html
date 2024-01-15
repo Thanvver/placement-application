@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{%block mainblock%}
+
+<div class="container mt-5 d-flex justify-content-center">
+
+    <div class="card" style="width:50%">
+        {%if application.student.profile.profile_pic%}
+            <img src="{{application.student.profile.profile_pic.url}}" class="card-img-top" alt="..." height="300px">
+        {%endif%}
+        <div class="card-body">
+          <h5 class="card-title fw-bolder">{{application.student}}</h5>
+          <p class="card-text">
+            Address:{{application.student.profile.address}}
+            Phone:{{application.student.profile.phone}}
+            Email:{{application.student.email}}
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Experience:{{application.student.profile.experience}}</li>
+          <li class="list-group-item">Gender:{{application.student.profile.gender}}</li>
+          <li class="list-group-item">Qualification:{{application.student.profile.qualification}}</li>
+        </ul>
+        <div class="card-body">
+            {%if application.student.profile.resume%}
+
+                <a href="{{application.student.profile.resume.url}}" download class="btn btn-outline-dark">Download cv</a>
+
+            {%endif%}
+
+            <form action="{%url 'application-edit' application.id%}" method="post">
+                {%csrf_token%}
+                <label for="">Select status</label>
+                <select name="status" id="" class="form-select form-control">
+                    <option value="rejected">Rejected</option>
+                    <option value="processing">Processing</option>
+                    <option value="shortlisted">Shortlisted</option>
+                </select>
+                <button type="submit">Save</button>
+                
+            </form>
+        </div>
+      </div>
+
+</div>
+
+{%endblock%}

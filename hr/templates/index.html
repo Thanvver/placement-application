@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block mainblock%}
+
+<div class="container">
+   <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 d-grid gap-2">
+        <div>
+             <a href="{%url 'category'%}" class="btn btn-dark w-25 d-grid gap-2 btn-lg">Category</a>
+    
+        </div>
+        <div class="mt-3">
+            <a href="{%url 'job-add'%}" class="btn btn-dark w-25 d-grid gap-2 btn-lg">Create Job</a>
+    
+        </div>
+       
+        <div class="mt-3">
+            <a href="#" class="btn btn-dark w-25 d-grid gap-2 btn-lg">Applications</a>
+    
+        </div>
+    </div>
+    <div class="col-3"></div>
+   </div>
+</div>
+
+{%endblock%}
+
+
+<a href="{%url 'category'%}" class="btn btn-dark w-25 d-grid gap-2 btn-lg">Category</a>
